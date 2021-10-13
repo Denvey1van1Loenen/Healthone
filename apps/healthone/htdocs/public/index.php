@@ -1,7 +1,7 @@
 <?php
 require '../Modules/Categories.php';
 require '../Modules/Products.php';
-//require '../Modules/Database.php';
+require '../Modules/Database.php';
 
 $request = $_SERVER['REQUEST_URI'];
 $params = explode("/", $request);
@@ -25,8 +25,10 @@ switch ($params[1]) {
                     saveReview($_POST['name'],$_POST['review']);
                     $reviews=getReviews($productId);
                 }
+                include_once "../Modules/Products.php";
                 // TODO Zorg dat je hier de product pagina laat zien
             } else {
+                include_once "../Templates/products.php";
                 // TODO Zorg dat je hier alle producten laat zien van een categorie
             }
         } else {

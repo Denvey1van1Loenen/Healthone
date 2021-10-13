@@ -1,5 +1,5 @@
 body {
-    background-color: gainsboro
+    background-color: lightblue;
 }
 
 .container {
@@ -25,4 +25,8 @@ body {
 
 .product-img {
     width: 70%;
+}
+.banner-img{
+    max-height: 350px;
+    width: 100%;
 }
