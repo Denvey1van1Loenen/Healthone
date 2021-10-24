@@ -11,30 +11,28 @@ include_once('defaults/head.php');
     include_once('defaults/header.php');
     include_once('defaults/menu.php');
     include_once('defaults/pictures.php');
+    global $product, $name;
     ?>
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/home">Home</a></li>
             <li class="breadcrumb-item"><a href="/categories">Categories</a></li>
+            <li class="breadcrumb-item"><a href="/categories/<?= $product->category_id ?>"> <?= $name ?></a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?=$product->name ?></li>
         </ol>
     </nav>
-    <div class="row gy-3 ">
-        <?php global $products ,$name?>
-        <?php foreach ($products as $product): ?>
-            <div class="col-sm-6 col-md-2">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <a href="/categories/<?= $product->category_id ?>/product/<?=$product->id?>">
-                            <img class="product-img img-responsive center-block" src='/img/<?= $product->picture ?>'/>
-                        </a>
-                        <div class="card-title mb-3"><?= $product->name ?></div>
-                    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <img class="img-fluid center-block" width="200px" src='/img/<?= $product->picture ?>'/>
+                <div class="card-body">
+                    <h5 class="card-title"><?= $product->name ?></h5>
+                    <p class="card-text"><?= $product->description ?></p>
                 </div>
             </div>
-        <?php endforeach; ?>
+        </div>
     </div>
-
     <hr>
     <?php
     include_once('defaults/footer.php');
@@ -44,4 +42,3 @@ include_once('defaults/head.php');
 
 </body>
 </html>
-

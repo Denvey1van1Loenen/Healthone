@@ -15,7 +15,7 @@ function getProducts(int $categoryId)
 function getProduct(int $productId)
 {
     global $pdo;
-    $sth = $pdo->parepare('SELECT * FROM product WHERE id=?');
+    $sth = $pdo->prepare('SELECT * FROM product WHERE id=?');
     $sth->bindParam(1,$productId);
     $sth->execute();
     return $sth->fetchAll(PDO::FETCH_CLASS,'product')[0];

@@ -11,7 +11,7 @@ $titleSuffix = "";
 switch ($params[1]) {
     case 'categories':
         $titleSuffix = ' | Categories';
-        
+
         if (isset($_GET['category_id'])) {
             $categoryId = $_GET['category_id'];
             $products = getProducts($categoryId);
@@ -21,15 +21,15 @@ switch ($params[1]) {
                 $productId = $_GET['product_id'];
                 $product = getProduct($productId);
                 $titleSuffix = ' | ' . $product->name;
-                if(isset($_POST['name']) && isset($_POST['review'])) {
+                /*if(isset($_POST['name']) && isset($_POST['review'])) {
                     saveReview($_POST['name'],$_POST['review']);
                     $reviews=getReviews($productId);
-                }
-                include_once "../Modules/Products.php";
+                }*/
                 // TODO Zorg dat je hier de product pagina laat zien
+                include_once "../Templates/product.php";
             } else {
-                include_once "../Templates/products.php";
                 // TODO Zorg dat je hier alle producten laat zien van een categorie
+                include_once "../Templates/products.php";
             }
         } else {
             // TODO Toon de categorieen
@@ -37,6 +37,10 @@ switch ($params[1]) {
             include_once "../Templates/categories.php";
         }
         break;
+    case 'contact':
+        include_once "../Templates/contact.php";
+        break;
+
     default:
         $titleSuffix = ' | Home';
         include_once "../Templates/home.php";
