@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2021 at 12:58 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.31
+-- Gegenereerd op: 28 okt 2021 om 11:15
+-- Serverversie: 10.4.21-MariaDB
+-- PHP-versie: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Tabelstructuur voor tabel `category`
 --
 
 CREATE TABLE `category` (
@@ -34,7 +34,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `category`
+-- Gegevens worden geëxporteerd voor tabel `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `picture`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `category` (`id`, `name`, `picture`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Tabelstructuur voor tabel `product`
 --
 
 CREATE TABLE `product` (
@@ -58,7 +58,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `product`
+-- Gegevens worden geëxporteerd voor tabel `product`
 --
 
 INSERT INTO `product` (`id`, `name`, `picture`, `description`, `category_id`) VALUES
@@ -72,7 +72,22 @@ INSERT INTO `product` (`id`, `name`, `picture`, `description`, `category_id`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `times`
+-- Tabelstructuur voor tabel `review`
+--
+
+CREATE TABLE `review` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `description` text NOT NULL,
+  `stars` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `times`
 --
 
 CREATE TABLE `times` (
@@ -81,7 +96,7 @@ CREATE TABLE `times` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `times`
+-- Gegevens worden geëxporteerd voor tabel `times`
 --
 
 INSERT INTO `times` (`dag`, `tijd`) VALUES
@@ -93,48 +108,97 @@ INSERT INTO `times` (`dag`, `tijd`) VALUES
 ('Zaterdag', '8:00-13:00'),
 ('Zondag', '8:00-13:00');
 
+-- --------------------------------------------------------
+
 --
--- Indexes for dumped tables
+-- Tabelstructuur voor tabel `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `role` enum('member','admin') DEFAULT 'member'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexes for table `category`
+-- Indexen voor tabel `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `product`
+-- Indexen voor tabel `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
   ADD KEY `category_id` (`category_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indexen voor tabel `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `stars` (`stars`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexen voor tabel `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT voor een tabel `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT voor een tabel `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT voor een tabel `review`
+--
+ALTER TABLE `review`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT voor een tabel `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Beperkingen voor geëxporteerde tabellen
 --
 
 --
--- Constraints for table `product`
+-- Beperkingen voor tabel `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
+
+--
+-- Beperkingen voor tabel `review`
+--
+ALTER TABLE `review`
+  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
