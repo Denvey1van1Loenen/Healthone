@@ -29,6 +29,7 @@ include_once('defaults/head.php');
                 <div class="card-body">
                     <h5 class="card-title"><?= $product->name ?></h5>
                     <p class="card-text"><?= $product->description ?></p>
+                    <a type="button" href="/review/<?=$product->id?>" role="button" class="btn btn-primary">Add Review</a>
                 </div>
             </div>
         </div>
