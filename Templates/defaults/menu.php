@@ -20,12 +20,12 @@
                     <a class="nav-link"  href="#">registreren</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact">Contact</a>
+                    <a class="nav-link" href="/contact">Contact</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">inloggen</a>
+                    <a class="nav-link" href="/login">inloggen</a>
                 </li>
             </ul>
         </div>
