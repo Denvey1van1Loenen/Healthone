@@ -14,13 +14,13 @@
                     <a class="nav-link " href="/home">home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/beheer">beheer
-                    </a>
+                    <a class="nav-link" href="/admin/products">beheer</a>
                 </li>
+               
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/home">uitloggen</a>
+                    <a class="nav-link" href="/login">inloggen</a>
                 </li>
             </ul>
         </div>

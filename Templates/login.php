@@ -10,20 +10,28 @@
             include_once ('defaults/menu.php');
             include_once ('defaults/pictures.php');
             ?>
-           <form method="post">
-               <div class="mb-3">
-                   <label for="example" class="form-label">Email adders</label>
-                   <input type="text" class="form-control" name="email" id="example1">
-              </div>
-              <div class="mb-3">
-                   <label for="example2" class="form-label">Password</label>
-                   <input type="password" name="password" class="form-control"  id="example2">
-              </div>
-            
-                    <button type="submit" name="login" class="btn btn-info text-light text-center">Submit</button>
-                
-          </form>
+            <?php if (!empty($message)) : ?>
+                <div class= "alert alert-danger "role="alert">
+                    <?=$message?>
+                </div>
+            <?php endif;?>
+            <h4> sportcenter HealthOne</h4>
+            <div class="container">
 
+    <form method="POST">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="text" class="form-control" name="email" id="email">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">password</label>
+            <input type="password" class="form-control" name="password" id="password">
+        </div>
+
+        <button type="submit" name="login" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
             <hr>
             <?php
             include_once ('defaults/footer.php');

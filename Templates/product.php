@@ -11,7 +11,7 @@ include_once('defaults/head.php');
     include_once('defaults/header.php');
     include_once('defaults/menu.php');
     include_once('defaults/pictures.php');
-    global $product, $name;
+    global $product, $name ,$reviews;
     ?>
 
     <nav aria-label="breadcrumb">
@@ -29,12 +29,21 @@ include_once('defaults/head.php');
                 <div class="card-body">
                     <h5 class="card-title"><?= $product->name ?></h5>
                     <p class="card-text"><?= $product->description ?></p>
-                    <a type="button" href="/review/<?=$product->id?>" role="button" class="btn btn-primary">Add Review</a>
+                   <a href="/review/<?=$product->id?>" > <div class button info-btn> voeg review toe </div> </a>
                 </div>
             </div>
         </div>
-    </div>
-    <hr>
+        <table>
+            <?php foreach ($reviews as $review) : ?>
+                <tr>
+                    <td><?= $review->name ?> </td>
+                    <td><?= $review->description ?></td>
+                    <td><?= $review->stars ?></td>
+                    <td><?= $review->date ?></td>
+                </tr>
+            <?php endforeach;?>
+        </table>
+</div>
     <?php
     include_once('defaults/footer.php');
 

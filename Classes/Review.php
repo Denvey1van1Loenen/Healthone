@@ -1,17 +1,19 @@
 <?php
 
 
-class Product
+class Review
 {
     public $id;
+    public $user_id;
     public $name;
-    public $picture;
+    public $date;
+    public $stars;
     public $description;
-    public $category_id;
+    public $product_id;
 
     public function __construct()
     {
         settype($this->id, 'integer');
-        settype($this->category_id, 'integer');
+        settype($this->product_id, 'integer');
     }
 }

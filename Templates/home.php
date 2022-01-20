@@ -10,7 +10,7 @@
             include_once ('defaults/menu.php');
             include_once ('defaults/pictures.php');
             ?>
-            <h4 class = "text-info">Sportcenter WealthOne</h4>
+            <h4 class = "text-info">Sportcenter HealthOne</h4>
             <p>
                 Fit en gezond zijn is geen vanzelfsprekendheid. We moeten er zelf wat voor doen. Goede, gezonde voeding is hiervoor de basis.
                 Bewegen hoort hier ook bij. Regelmatig bewegen zorgt voor een goede doorbloeding en draagt bij aan ontspanning van lichaam en geest.
