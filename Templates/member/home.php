@@ -9,16 +9,10 @@
             include_once ('defaults/header.php');
             include_once ('defaults/menu.php');
             include_once ('defaults/pictures.php');
-            global $message;
             ?>
-            <?php if (!empty($message)) : ?>
-                <div class= "alert alert-success "role="alert">
-                    <?=$message?>
-                </div>
-            <?php endif;?>
-            <h4 class = "text-info">Sportcenter HealthOne</h4>
+            <h4 class = "text-info">Sportcenter WealthOne</h4>
             <p>
-                Fit en gezond zijn is geen vanzelfsprekendheid. We moeten er zelf wat voor doen. Goede, gezonde voeding is hiervoor de basis.
+                <h4>Hallo,<?=$_SESSION['user']->first_name?> <?=$_SESSION['user']->last_name?></h4> Fit en gezond zijn is geen vanzelfsprekendheid. We moeten er zelf wat voor doen. Goede, gezonde voeding is hiervoor de basis.
                 Bewegen hoort hier ook bij. Regelmatig bewegen zorgt voor een goede doorbloeding en draagt bij aan ontspanning van lichaam en geest.
                 Sporten is goed voor sterkere spieren en voor de conditie. Sporcenter HealthOne heeft verschillende sportapparaten om mee te kunnen werken aan je conditie.
             </p>
